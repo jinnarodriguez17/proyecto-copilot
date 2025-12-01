@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Técnico - Tablas Hash</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <h1>Hash Academy</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active">Inicio</a></li>
+                <li><a href="#post1" class="nav-link">Post 1</a></li>
+                <li><a href="#post2" class="nav-link">Post 2</a></li>
+                <li><a href="#post3" class="nav-link">Post 3</a></li>
+                <li><a href="#about" class="nav-link">Acerca</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2 class="hero-title">Domina las Tablas Hash</h2>
+            <p class="hero-subtitle">Una guía completa sobre la estructura de datos más eficiente</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('post1').scrollIntoView({behavior: 'smooth'})">
+                    Comienza Aquí
+                </button>
+                <button class="btn btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+                    Más Información
+                </button>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <div class="hash-visual"></div>
+        </div>
+    </section>
+
+    <!-- Posts Container -->
+    <main class="posts-container">
+        
+        <!-- POST 1: Introducción -->
+        <article id="post1" class="post fade-in">
+            <div class="post-header">
+                <h2>Post #1: Introducción a las Tablas Hash</h2>
+                <span class="post-date">30 de Noviembre, 2025</span>
+            </div>
+
+            <div class="post-content">
+                <h3>¿Qué es una Tabla Hash?</h3>
+                <p>
+                    Una tabla hash es una estructura de datos que implementa un array asociativo, 
+                    una estructura que mapea claves a valores. Utiliza una <strong>función hash</strong> 
+                    para computar un índice en un array de buckets o slots, desde los cuales se obtiene 
+                    el valor deseado.
+                </p>
+
+                <h3>Conceptos Clave</h3>
+                <div class="concepts-grid">
+                    <div class="concept-card">
+                        <h4>Clave (Key)</h4>
+                        <p>Identificador único que se utiliza para acceder a los datos</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Valor (Value)</h4>
+                        <p>Dato asociado a la clave que se desea almacenar</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Función Hash</h4>
+                        <p>Algoritmo que convierte una clave en un índice del array</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Índice</h4>
+                        <p>Posición en el array donde se almacena el valor</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Colisión</h4>
+                        <p>Ocurre cuando dos claves generan el mismo índice</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>Eficiencia</h4>
+                        <p>Operaciones en O(1) en el caso promedio</p>
+                    </div>
+                </div>
+
+                <h3>¿Por qué son tan eficientes?</h3>
+                <p>
+                    Las tablas hash proporcionan acceso directo a los datos en <strong>tiempo promedio O(1)</strong>. 
+                    Esto significa que insertar, buscar y eliminar elementos toma aproximadamente el mismo tiempo, 
+                    sin importar cuántos elementos haya en la tabla.
+                </p>
+
+                <div class="comparison-table">
+                    <h4>Comparación de Complejidad</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Operación</th>
+                                <th>Caso Promedio</th>
+                                <th>Peor Caso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Insertar</td>
+                                <td class="success">O(1)</td>
+                                <td class="warning">O(n)</td>
+                            </tr>
+                            <tr>
+                                <td>Buscar</td>
+                                <td class="success">O(1)</td>
+                                <td class="warning">O(n)</td>
+                            </tr>
+                            <tr>
+                                <td>Eliminar</td>
+                                <td class="success">O(1)</td>
+                                <td class="warning">O(n)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Visualización de una Tabla Hash Básica</h3>
+                <div class="visualization">
+                    <div class="hash-process">
+                        <div class="process-step">
+                            <div class="step-label">Clave</div>
+                            <input type="text" id="keyInput1" value="nombre" class="hash-input" readonly>
+                        </div>
+                        <div class="process-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-label">Función Hash</div>
+                            <div class="hash-function">hash(k) % n</div>
+                        </div>
+                        <div class="process-arrow">→</div>
+                        <div class="process-step">
+                            <div class="step-label">Índice</div>
+                            <div class="hash-index" id="hashIndex1">3</div>
+                        </div>
+                    </div>
+
+                    <div class="hash-table-viz">
+                        <div class="table-label">Tabla Hash (Tamaño: 10)</div>
+                        <div class="hash-array">
+                            <div class="array-cell">0: -</div>
+                            <div class="array-cell">1: -</div>
+                            <div class="array-cell">2: -</div>
+                            <div class="array-cell active">3: "Juan"</div>
+                            <div class="array-cell">4: -</div>
+                            <div class="array-cell">5: -</div>
+                            <div class="array-cell">6: -</div>
+                            <div class="array-cell">7: -</div>
+                            <div class="array-cell">8: -</div>
+                            <div class="array-cell">9: -</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- POST 2: Manejo de Colisiones -->
+        <article id="post2" class="post fade-in">
+            <div class="post-header">
+                <h2>Post #2: Manejo de Colisiones en Tablas Hash</h2>
+                <span class="post-date">30 de Noviembre, 2025</span>
+            </div>
+
+            <div class="post-content">
+                <h3>¿Qué es una Colisión?</h3>
+                <p>
+                    Una colisión ocurre cuando dos claves diferentes generan el mismo índice en la tabla hash. 
+                    Es un problema inevitable en cualquier tabla hash, y existen varias estrategias para manejarlas.
+                </p>
+
+                <h3>Estrategia 1: Encadenamiento (Chaining)</h3>
+                <div class="strategy-card">
+                    <h4>Características</h4>
+                    <ul>
+                        <li>✓ Cada posición almacena una lista enlazada</li>
+                        <li>✓ Fácil de implementar</li>
+                        <li>✓ Crece dinámicamente</li>
+                        <li>✓ No hay límite de elementos</li>
+                    </ul>
+
+                    <h4 style="margin-top: 20px;">Visualización de Chaining</h4>
+                    <div class="chaining-visualization">
+                        <div class="chaining-table">
+                            <div class="chain-cell">
+                                <div class="chain-index">0</div>
+                                <div class="chain-list empty">∅</div>
+                            </div>
+                            <div class="chain-cell">
+                                <div class="chain-index">1</div>
+                                <div class="chain-list">
+                                    <span class="chain-node">nombre→Juan</span>
+                                    <span class="chain-arrow">→</span>
+                                    <span class="chain-node">edad→25</span>
+                                    <span class="chain-arrow">→</span>
+                                    <span class="chain-null">∅</span>
+                                </div>
+                            </div>
+                            <div class="chain-cell">
+                                <div class="chain-index">2</div>
+                                <div class="chain-list empty">∅</div>
+                            </div>
+                            <div class="chain-cell">
+                                <div class="chain-index">3</div>
+                                <div class="chain-list">
+                                    <span class="chain-node">email→juan@mail.com</span>
+                                    <span class="chain-arrow">→</span>
+                                    <span class="chain-null">∅</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Estrategia 2: Direccionamiento Abierto (Open Addressing)</h3>
+                <div class="strategy-card">
+                    <h4>Características</h4>
+                    <ul>
+                        <li>✓ Todos los elementos se almacenan en la tabla</li>
+                        <li>✓ Si hay colisión, se busca otra posición</li>
+                        <li>✓ Mejor localidad de caché</li>
+                        <li>✓ Requiere rehashing cuando se llena</li>
+                    </ul>
+
+                    <h4 style="margin-top: 20px;">Métodos de Exploración</h4>
+                    <div class="methods-grid">
+                        <div class="method-card">
+                            <h5>Linear Probing</h5>
+                            <div class="formula">h(k, i) = (h(k) + i) mod m</div>
+                            <p>Busca secuencialmente la siguiente posición disponible</p>
+                        </div>
+                        <div class="method-card">
+                            <h5>Quadratic Probing</h5>
+                            <div class="formula">h(k, i) = (h(k) + c₁·i + c₂·i²) mod m</div>
+                            <p>Reduce el clustering primario</p>
+                        </div>
+                        <div class="method-card">
+                            <h5>Double Hashing</h5>
+                            <div class="formula">h(k, i) = (h₁(k) + i·h₂(k)) mod m</div>
+                            <p>Usa dos funciones hash diferentes</p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin-top: 20px;">Visualización: Linear Probing</h4>
+                    <div class="open-addressing-viz">
+                        <div class="probe-steps">
+                            <div class="probe-step">
+                                <div class="step-num">Paso 1</div>
+                                <div class="probe-table">
+                                    <div class="probe-cell">0</div>
+                                    <div class="probe-cell occupied">Juan (h=1)</div>
+                                    <div class="probe-cell">2</div>
+                                    <div class="probe-cell">3</div>
+                                </div>
+                                <p>Hash(x) = 1, posición libre</p>
+                            </div>
+                            <div class="probe-step">
+                                <div class="step-num">Paso 2</div>
+                                <div class="probe-table">
+                                    <div class="probe-cell">0</div>
+                                    <div class="probe-cell occupied">Juan</div>
+                                    <div class="probe-cell occupied">María (h=1)</div>
+                                    <div class="probe-cell">3</div>
+                                </div>
+                                <p>Colisión en 1, se va a 2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- POST 3: Implementación y Operaciones -->
+        <article id="post3" class="post fade-in">
+            <div class="post-header">
+                <h2>Post #3: Implementación y Operaciones Fundamentales</h2>
+                <span class="post-date">30 de Noviembre, 2025</span>
+            </div>
+
+            <div class="post-content">
+                <h3>Las Tres Operaciones Principales</h3>
+                
+                <h4>1. Insertar (PUT)</h4>
+                <div class="operation-card">
+                    <div class="operation-steps">
+                        <div class="op-step">
+                            <span class="step-number">①</span>
+                            <div>
+                                <strong>Calcular Hash</strong>
+                                <p>hash = hashFunction(key)</p>
+                            </div>
+                        </div>
+                        <div class="op-step">
+                            <span class="step-number">②</span>
+                            <div>
+                                <strong>Obtener Índice</strong>
+                                <p>index = hash % tableSize</p>
+                            </div>
+                        </div>
+                        <div class="op-step">
+                            <span class="step-number">③</span>
+                            <div>
+                                <strong>Almacenar</strong>
+                                <p>table[index] = value (o agregar a lista)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h5>Demo Interactiva: Inserción</h5>
+                        <div class="demo-input-group">
+                            <input type="text" id="insertKey" placeholder="Ingresa una clave" class="demo-input">
+                            <input type="text" id="insertValue" placeholder="Ingresa un valor" class="demo-input">
+                            <button class="btn btn-demo" onclick="simulateInsert()">Insertar</button>
+                        </div>
+                        <div class="demo-table" id="insertTable">
+                            <div class="demo-cell">0: -</div>
+                            <div class="demo-cell">1: -</div>
+                            <div class="demo-cell">2: -</div>
+                            <div class="demo-cell">3: -</div>
+                            <div class="demo-cell">4: -</div>
+                        </div>
+                        <div class="demo-feedback" id="insertFeedback"></div>
+                    </div>
+                </div>
+
+                <h4>2. Buscar (GET)</h4>
+                <div class="operation-card">
+                    <div class="operation-steps">
+                        <div class="op-step">
+                            <span class="step-number">①</span>
+                            <div>
+                                <strong>Calcular Hash</strong>
+                                <p>hash = hashFunction(key)</p>
+                            </div>
+                        </div>
+                        <div class="op-step">
+                            <span class="step-number">②</span>
+                            <div>
+                                <strong>Obtener Índice</strong>
+                                <p>index = hash % tableSize</p>
+                            </div>
+                        </div>
+                        <div class="op-step">
+                            <span class="step-number">③</span>
+                            <div>
+                                <strong>Acceder</strong>
+                                <p>return table[index]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h5>Demo Interactiva: Búsqueda</h5>
+                        <div class="demo-input-group">
+                            <input type="text" id="searchKey" placeholder="Ingresa clave a buscar" class="demo-input">
+                            <button class="btn btn-demo" onclick="simulateSearch()">Buscar</button>
+                        </div>
+                        <div class="demo-feedback" id="searchFeedback"></div>
+                    </div>
+                </div>
+
+                <h4>3. Eliminar (DELETE)</h4>
+                <div class="operation-card">
+                    <div class="operation-steps">
+                        <div class="op-step">
+                            <span class="step-number">①</span>
+                            <div>
+                                <strong>Localizar</strong>
+                                <p>Encontrar la clave en la tabla</p>
+                            </div>
+                        </div>
+                        <div class="op-step">
+                            <span class="step-number">②</span>
+                            <div>
+                                <strong>Eliminar</strong>
+                                <p>Chaining: remover de lista</p>
+                            </div>
+                        </div>
+                        <div class="op-step">
+                            <span class="step-number">③</span>
+                            <div>
+                                <strong>Marcar</strong>
+                                <p>Open Addressing: marcar como "deleted"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h5>Demo Interactiva: Eliminación</h5>
+                        <div class="demo-input-group">
+                            <input type="text" id="deleteKey" placeholder="Ingresa clave a eliminar" class="demo-input">
+                            <button class="btn btn-demo" onclick="simulateDelete()">Eliminar</button>
+                        </div>
+                        <div class="demo-feedback" id="deleteFeedback"></div>
+                    </div>
+                </div>
+
+                <h3>Resumen Comparativo</h3>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Característica</th>
+                                <th>Chaining</th>
+                                <th>Open Addressing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Simplicidad</td>
+                                <td class="success">Alta</td>
+                                <td class="warning">Media</td>
+                            </tr>
+                            <tr>
+                                <td>Memoria</td>
+                                <td class="warning">+Apuntadores</td>
+                                <td class="success">Solo datos</td>
+                            </tr>
+                            <tr>
+                                <td>Caché</td>
+                                <td class="warning">Mala</td>
+                                <td class="success">Buena</td>
+                            </tr>
+                            <tr>
+                                <td>Borrado</td>
+                                <td class="success">Fácil</td>
+                                <td class="warning">Complejo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>Acerca del Blog</h2>
+        <p>
+            Este blog técnico ha sido creado como parte de una actividad educativa completa sobre 
+            estructuras de datos. Proporciona una guía comprensiva sobre Tablas Hash, sus mecanismos 
+            internos y sus aplicaciones prácticas.
+        </p>
+        <div class="about-features">
+            <div class="feature">
+                <h4>📚 Contenido Técnico</h4>
+                <p>Explicaciones detalladas con ejemplos visuales</p>
+            </div>
+            <div class="feature">
+                <h4>🎨 Diseño Moderno</h4>
+                <p>Interfaz atractiva con animaciones suaves</p>
+            </div>
+            <div class="feature">
+                <h4>⚡ Demos Interactivas</h4>
+                <p>Simula operaciones en tiempo real</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Hash Academy. Todos los derechos reservados.</p>
+        <div class="footer-links">
+            <a href="https://github.com">GitHub</a> | 
+            <a href="#">Contacto</a> | 
+            <a href="#">Privacidad</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
